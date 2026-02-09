@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+streamlit
+google-generativeai
+chromadb
+groq
+python-dotenv
+requests
+pymupdf

@@ -1,0 +1,4 @@
+My name is Gowthami.
+I am learning about RAG systems.
+I work on AI projects.
+My favorite food is Biryani.
