@@ -5,12 +5,12 @@ from groq import Groq
 
 # from embeddings import get_embedding
 # from vectorstore import collection
-from embeddings import get_embedding
-from vectorstore import collection
+# from embeddings import get_embedding
+# from vectorstore import collection
 
 
-# from backend.embeddings import get_embedding
-# from backend.vectorstore import collection
+from backend.embeddings import get_embedding
+from backend.vectorstore import collection
 
 
 load_dotenv()
