@@ -40,74 +40,54 @@
 
 # if __name__ == "__main__":
 #     ingest()
-import os
-from ingest import load_txt_files
-from pdf_loader import load_pdf_files
-from chunker import chunk_text
-from embeddings import get_embedding
-from vectorstore import collection
+
+# import os
+# import tiktoken
 
 
-def ingest():
-    folder_path = "../data/documents"
+# # ----------------------------------
+# # Load TXT Files
+# # ----------------------------------
 
-    all_chunks = []
-    all_embeddings = []
-    all_metadatas = []
-    all_ids = []
+# def load_txt_files(folder_path):
+#     texts = []
 
-    # -------- TXT FILES --------
-    for file in os.listdir(folder_path):
-        if file.endswith(".txt"):
-            file_path = os.path.join(folder_path, file)
-            documents = load_txt_files(folder_path)
+#     for file in os.listdir(folder_path):
+#         if file.endswith(".txt"):
+#             file_path = os.path.join(folder_path, file)
 
-            for doc_index, doc in enumerate(documents):
-                chunks = chunk_text(doc)
+#             with open(file_path, "r", encoding="utf-8") as f:
+#                 content = f.read().strip()
+#                 if content:
+#                     texts.append(content)
 
-                for i, chunk in enumerate(chunks):
-                    chunk_id = f"{file}_chunk_{i}"
+#     return texts
 
-                    all_chunks.append(chunk)
-                    all_embeddings.append(get_embedding(chunk))
-                    all_ids.append(chunk_id)
-                    all_metadatas.append({
-                        "document_id": file,
-                        "chunk_id": chunk_id,
-                        "source_type": "txt"
-                    })
 
-    # -------- PDF FILES --------
-    pdf_texts = load_pdf_files(folder_path)
-    pdf_files = [f for f in os.listdir(folder_path) if f.endswith(".pdf")]
+# # ----------------------------------
+# # Token-Based Chunker
+# # ----------------------------------
 
-    for pdf_file, pdf_text in zip(pdf_files, pdf_texts):
-        chunks = chunk_text(pdf_text)
+# def chunk_text(text, chunk_size=500, overlap=100):
+#     """
+#     Splits text into token-based chunks using tiktoken.
+#     """
 
-        for i, chunk in enumerate(chunks):
-            chunk_id = f"{pdf_file}_chunk_{i}"
+#     enc = tiktoken.get_encoding("cl100k_base")
+#     tokens = enc.encode(text)
 
-            all_chunks.append(chunk)
-            all_embeddings.append(get_embedding(chunk))
-            all_ids.append(chunk_id)
-            all_metadatas.append({
-                "document_id": pdf_file,
-                "chunk_id": chunk_id,
-                "source_type": "pdf"
-            })
+#     chunks = []
+#     start = 0
 
-    if not all_chunks:
-        raise RuntimeError("No documents found to ingest.")
+#     while start < len(tokens):
+#         end = start + chunk_size
+#         chunk = enc.decode(tokens[start:end])
+#         chunks.append(chunk)
+#         start += chunk_size - overlap
 
-    collection.add(
-        documents=all_chunks,
-        embeddings=all_embeddings,
-        ids=all_ids,
-        metadatas=all_metadatas
-    )
+#     return chunks
 
-    print(f"✅ Ingestion complete. Stored {len(all_chunks)} chunks.")
-
+from ingest import ingest
 
 if __name__ == "__main__":
     ingest()
