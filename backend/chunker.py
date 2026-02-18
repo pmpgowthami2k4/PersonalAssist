@@ -66,26 +66,39 @@
 #         start += chunk_size - overlap
 
 #     return chunks
+# 22222222222222222222222222222222222222222222222
+# import tiktoken
 
-import tiktoken
 
+# def chunk_text(text, chunk_size=500, overlap=100):
+#     """
+#     Token-based chunking using OpenAI tokenizer.
+#     """
 
-def chunk_text(text, chunk_size=500, overlap=100):
-    """
-    Token-based chunking using OpenAI tokenizer.
-    """
+#     enc = tiktoken.get_encoding("cl100k_base")
+#     tokens = enc.encode(text)
 
-    enc = tiktoken.get_encoding("cl100k_base")
-    tokens = enc.encode(text)
+#     chunks = []
+#     start = 0
 
+#     while start < len(tokens):
+#         end = start + chunk_size
+#         chunk = enc.decode(tokens[start:end])
+#         chunks.append(chunk)
+#         start += chunk_size - overlap
+
+#     return chunks
+
+# 333333333333333333333333333333333333
+
+def chunk_text(text, chunk_size=800, overlap=150):
     chunks = []
     start = 0
 
-    while start < len(tokens):
+    while start < len(text):
         end = start + chunk_size
-        chunk = enc.decode(tokens[start:end])
+        chunk = text[start:end]
         chunks.append(chunk)
         start += chunk_size - overlap
 
     return chunks
-
