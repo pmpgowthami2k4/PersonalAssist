@@ -1,10 +1,18 @@
-fastapi
-uvicorn
-streamlit
-google-generativeai
-chromadb
-groq
-python-dotenv
+# fastapi
+# uvicorn
+# streamlit
+# google-generativeai
+# chromadb
+# groq
+# python-dotenv
+# requests
+# pymupdf
+# tiktoken
+
+fastapi==0.110.0
+uvicorn==0.29.0
+chromadb==0.4.24
+pydantic==1.10.13
+tiktoken==0.5.2
 requests
-pymupdf
-tiktoken
+python-dotenv
