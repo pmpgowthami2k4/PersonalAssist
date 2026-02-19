@@ -10,8 +10,9 @@
 # tiktoken
 
 fastapi==0.110.0
-uvicorn==0.29.0
-chromadb==0.4.24
+uvicorn[standard]==0.27.1
 pydantic==1.10.13
-requests
-python-dotenv
+chromadb==0.4.24
+python-dotenv==1.0.1
+openai
+tiktoken
