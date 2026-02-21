@@ -17,11 +17,8 @@
 # openai
 # tiktoken
 
-fastapi==0.110.0
-uvicorn[standard]==0.27.1
-pydantic==2.6.4
+fastapi==0.103.2
+uvicorn[standard]==0.23.2
+pydantic==1.10.13
 python-dotenv
-chromadb==0.4.24
-openai
-tiktoken
 
