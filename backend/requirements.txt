@@ -26,3 +26,4 @@ chromadb==0.4.24
 tiktoken
 requests
 pymupdf
+numpy<2.0
