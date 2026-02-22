@@ -20,5 +20,9 @@
 fastapi==0.103.2
 uvicorn[standard]==0.23.2
 pydantic==1.10.13
-python-dotenv
-
+python-dotenv==1.0.1
+groq
+chromadb==0.4.24
+tiktokeng
+requests
+pymupdf
