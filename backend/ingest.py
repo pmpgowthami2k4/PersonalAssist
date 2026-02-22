@@ -18,9 +18,9 @@ import os
 # from chunker import chunk_text
 # from embeddings import get_embedding
 # from vectorstore import collection
-from backend.chunker import chunk_text
-from backend.embeddings import get_embedding
-from backend.vectorstore import collection
+from chunker import chunk_text
+from embeddings import get_embedding
+from vectorstore import collection
 
 from pdf_loader import load_pdf_files
 

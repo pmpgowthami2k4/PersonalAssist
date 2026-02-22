@@ -66,7 +66,8 @@
 
 from fastapi import FastAPI
 from pydantic import BaseModel
-from backend.rag import generate_answer
+# from backend.rag import generate_answer
+from rag import generate_answer
 
 
 
