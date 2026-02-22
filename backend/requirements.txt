@@ -23,6 +23,6 @@ pydantic==1.10.13
 python-dotenv==1.0.1
 groq
 chromadb==0.4.24
-tiktokeng
+tiktoken
 requests
 pymupdf
