@@ -110,9 +110,9 @@ def chat(req: ChatRequest):
 def health():
     return {"status": "RAG assistant is running"}
 
-from ingest_runner import run_ingestion
+from ingest import ingest
 
 @app.post("/ingest")
-def ingest():
-    run_ingestion()
+def run_ingest():
+    ingest()
     return {"status": "Ingestion complete"}
