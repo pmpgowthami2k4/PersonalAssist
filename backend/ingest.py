@@ -20,7 +20,7 @@ import os
 # from vectorstore import collection
 from chunker import chunk_text
 from embeddings import get_embedding
-from vectorstore import collection
+from vectorstore import BASE_DIR, collection
 
 from pdf_loader import load_pdf_files
 
@@ -40,7 +40,10 @@ def load_txt_files(folder_path):
 
 
 def ingest():
-    folder_path = "../data/documents"
+    BASE_DIR = os.path.dirname(__file__)
+    folder_path = os.path.join(BASE_DIR, "data", "documents")
+
+    print("📂 Loading from:", folder_path)
 
     all_chunks = []
     all_embeddings = []
