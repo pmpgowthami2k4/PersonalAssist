@@ -39,16 +39,30 @@ def load_txt_files(folder_path):
     return texts
 
 
+# def ingest():
+#     BASE_DIR = os.path.dirname(__file__)
+#     folder_path = os.path.join(BASE_DIR, "data", "documents")
+
+#     print("📂 Loading from:", folder_path)
+
+#     all_chunks = []
+#     all_embeddings = []
+#     all_ids = []
+#     all_metadatas = []
+
 def ingest():
+    print("🚀 INGEST FUNCTION STARTED")
+
     BASE_DIR = os.path.dirname(__file__)
     folder_path = os.path.join(BASE_DIR, "data", "documents")
 
     print("📂 Loading from:", folder_path)
 
-    all_chunks = []
-    all_embeddings = []
-    all_ids = []
-    all_metadatas = []
+    if not os.path.exists(folder_path):
+        print("❌ Folder does not exist!")
+        raise RuntimeError("Documents folder not found")
+
+    print("📄 Files found:", os.listdir(folder_path))
 
     # -------- TXT FILES --------
     txt_files = load_txt_files(folder_path)
