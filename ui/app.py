@@ -16,7 +16,7 @@ st.caption("You are sorted !!")
 
 # BACKEND URL (from Streamlit secrets)
 
-BACKEND_URL = st.secrets["https://personalassist-1.onrender.com/"]
+BACKEND_URL = st.secrets["BACKEND_URL"]
 
 # SESSION STATE
 
